@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link href="/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Please Sign Up</h1>
-    <h2>Hello, [[${username}]]</h2>
-    <form action="/signup" method="POST">
-        <input name="username">UserName
-        <input name="password" type="password">Password
-        <input type="text" name="firstname">First Name
-        <input type="text" name="lastname">Last Name
-        <input name="dateofbirth">Date of Birth
-        <input type="text" name="bio">Bio
-        <input type="submit" />
-    </form>
+    <div class="container">
+        <h1>Please Sign Up</h1>
+        <h2>Hello, [[${username}]]!</h2>
+        <form action="/signup" method="POST">
+            <input name="username">UserName
+            <input name="password" type="password">Password
+            <input type="text" name="firstname">First Name
+            <input type="text" name="lastname">Last Name
+            <input name="dateofbirth">Date of Birth
+            <input type="text" name="bio">Bio
+            <input type="submit" />
+        </form>
+    </div>
 </body>
 </html>
