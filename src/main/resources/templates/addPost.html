@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add a Post</title>
 </head>
 <body>
-    <div class="container"> <!-- add fragment -->
-        <form action="addPost" method="post>
+    <div th:replace="fragments/nav :: nav"></div>
+
+    <div class="container">
+        <form action="/addPost" method="POST">
+            <input type="text" name="body" id="body">
+            <label for="body">Add a Post</label>
+            <input type="submit" value="Create Post">
         </form>
     </div>
 </body>

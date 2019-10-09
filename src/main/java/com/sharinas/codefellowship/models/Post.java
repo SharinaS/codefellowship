@@ -11,8 +11,10 @@ public class Post {
     @ManyToOne
     ApplicationUser owner;
 
-    private final String body;
-    private final String timeStamp;
+    private String body;
+    private String timeStamp;
+
+    public Post() {}
 
     public Post(String body, String timeStamp, ApplicationUser owner) {
         this.body = body;

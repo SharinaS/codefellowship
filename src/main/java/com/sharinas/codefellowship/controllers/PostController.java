@@ -6,11 +6,15 @@ import com.sharinas.codefellowship.models.Post;
 import com.sharinas.codefellowship.models.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 public class PostController {
@@ -22,19 +26,26 @@ public class PostController {
     @Autowired
     PostRepository postRepository;
 
+
     @GetMapping("/addPost")
-    public String showPostForm(){
+    public String showPostForm(Principal p, Model m){
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        }
         return "addPost";
     }
 
     @PostMapping("/addPost")
-    public RedirectView addPost(Principal p, String body, String timeStamp, ApplicationUser owner) {
+    public RedirectView addPost(Principal p, String body) {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        Date timeStamp = new Date();
+
         ApplicationUser theUser = applicationUserRepository.findByUsername(p.getName());
 
-        /* add code here about saving the post */
-        Post post = new Post(body, timeStamp, owner);
+        Post post = new Post(body, dateFormat.format(timeStamp), theUser);
+
         postRepository.save(post);
 
-        return new RedirectView("/users/" + theUser.getId());
+        return new RedirectView("/usersProfile" + theUser.getId());
     }
 }
