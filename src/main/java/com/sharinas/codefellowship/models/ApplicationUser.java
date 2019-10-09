@@ -84,5 +84,11 @@ public class ApplicationUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s, born on %s, with a bio of: %s", this.firstname, this.lastname, this.dateofbirth, this.bio);
+    }
+
 }
 

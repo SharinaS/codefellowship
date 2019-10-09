@@ -31,21 +31,22 @@ public class ApplicationUserController {
         return new RedirectView("/");
     }
 
-    @GetMapping("/login")
-    public String getLoginPage() {
-        return "login";
-    }
-
     @GetMapping("/signup")
     public String getSignupPage() {
         return "signup";
     }
 
-    @GetMapping("/userProfile/{id}")
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "login";
+    }
+
+    @GetMapping("/users/{id}")
     public String showSingleUser(@PathVariable long id, Principal p, Model m) {
 
-        m.addAttribute("viewedUser", applicationUserRepository.findById(id).get());
-        m.addAttribute("user", p);
+        ApplicationUser user = applicationUserRepository.findById(id).get();
+        m.addAttribute("viewedUser", user);
+        //m.addAttribute("user", p.getName()); // from thymeleaf
         return "userProfile";
     }
 }
