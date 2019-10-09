@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User</title>
 </head>
 <body>
     <div class="container">
-        <div th:replace="framents/>nav :: flowers"></div> <!-- double colons do what? -->
-        <h2>Welcome to </h2>
-        <!-- Shows All Posts linked to this User -->
+        <div th:replace="framents/nav :: nav"></div>
+        <h2>Welcome to [[${viewedUser.username{]]'s profile</h2>
+        <ul>
+            <li th:each="post : ${viewedUser.posts}" th:text="${post}">
+            </li>
+        </ul>
     </div>
 
 </body>

@@ -41,7 +41,7 @@ public class ApplicationUserController {
         return "signup";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/userProfile/{id}")
     public String showSingleUser(@PathVariable long id, Principal p, Model m) {
 
         m.addAttribute("viewedUser", applicationUserRepository.findById(id).get());
