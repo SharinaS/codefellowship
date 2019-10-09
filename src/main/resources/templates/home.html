@@ -7,30 +7,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <!--- If a person is signed in  -->
-    <div class="container" th:if="${username}">
-        <nav>
-            <li><a href="/">home</a></li>
-            <li><a href="/logout">logout</a></li>
-        </nav>
-        <div class="row">
-            <h1>Welcome!</h1>
-            <h2>Hello, [[${username}]]!</h2>
-        </div>
-    </div>
-    <!--- If a person is not yet signed in -- FIX THIS  -->
-    <div class="container" th:if="${username}">
-        <nav>
-            <li><a href="/">home</a></li>
-            <li><a href="/login">login</a></li>
-            <li><a href="/signup">signup</a></li>
-            <li><a href="/logout">logout</a></li>
-        </nav>
-        <div class="row">
-            <h1>Welcome!</h1>
-            <h2>Please sign up to access CodeFellowship</h2>
-            <button>SignUp</button> <!--- tell it where to go -->
-        </div>
-    </div>
+    <div th:replace="fragments/nav :: nav"></div>
 </body>
 </html>
