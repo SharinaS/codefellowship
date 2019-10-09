@@ -33,13 +33,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
+
         http
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/signup").permitAll()
-                .anyRequest().permitAll()
+                // users should be able to see the following, but note that basic user will want to also add any static resources:
+                .antMatchers("/", "/signup", "/login").permitAll()
+                // if not signed in, user will be redirected to the sign-in page:
+                .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")

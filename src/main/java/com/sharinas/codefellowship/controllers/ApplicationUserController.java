@@ -5,9 +5,13 @@ import com.sharinas.codefellowship.models.ApplicationUserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+
+import java.security.Principal;
 
 @Controller
 public class ApplicationUserController {
@@ -30,5 +34,18 @@ public class ApplicationUserController {
     @GetMapping("/login")
     public String getLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/signup")
+    public String getSignupPage() {
+        return "signup";
+    }
+
+    @GetMapping("/users/{id}")
+    public String showSingleUser(@PathVariable long id, Principal p, Model m) {
+
+        m.addAttribute("viewedUser", applicationUserRepository.findById(id).get());
+        m.addAttribute("user", p);
+        return "userProfile";
     }
 }

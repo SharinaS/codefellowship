@@ -7,18 +7,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+    <div class="nav">
+        <nav>
+            <li><a href="/">home</a></li>
+            <li><a href="/login">login</a></li>
+            <li><a href="/signup">logout</a></li>
+            <li><a href="/logout">logout</a></li>
+        </nav>
+    </div>
     <div class="container">
-        <h1>Please Sign Up</h1>
+        <h1>Welcome!</h1>
         <h2>Hello, [[${username}]]!</h2>
-        <form action="/signup" method="POST">
-            <input name="username">UserName
-            <input name="password" type="password">Password
-            <input type="text" name="firstname">First Name
-            <input type="text" name="lastname">Last Name
-            <input name="dateofbirth">Date of Birth
-            <input type="text" name="bio">Bio
-            <input type="submit" />
-        </form>
     </div>
 </body>
 </html>
