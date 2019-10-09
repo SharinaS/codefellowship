@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nav Fragment</title>
+</head>
+<body>
+    <div class="container">
+        <section th:fragment="nav">
+            <!-- if person is logged in... -->
+            <nav th:if="${username}">
+                <h2>Hello, [[${username}]]!</h2>
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <!-- if person is new or needs to login -->
+            <nav th:unless="${username}">
+                <h2>Welcome to CodeFellowship!</h2>
+                <p>Please create an account or login</p>
+                <ul>
+                    <li><a href="/">home</a></li>
+                    <li><a href="/login">login</a></li>
+                    <li><a href="/signup">signup</a></li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+
+</body>
+</html>
