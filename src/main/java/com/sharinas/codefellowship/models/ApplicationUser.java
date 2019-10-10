@@ -29,9 +29,6 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
     List<Post> posts;
 
-    public List<Post> getPosts() {
-        return posts;
-    }
 
     public ApplicationUser() {}
 
@@ -47,6 +44,26 @@ public class ApplicationUser implements UserDetails {
         this.lastname = lastname;
         this.dateofbirth = dateofbirth;
         this.bio = bio;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getDateofbirth() {
+        return dateofbirth;
+    }
+
+    public String getBio() {
+        return bio;
     }
 
     @Override
@@ -88,6 +105,8 @@ public class ApplicationUser implements UserDetails {
     public String toString() {
         return String.format("%s %s, born on %s, with a bio of: %s", this.firstname, this.lastname, this.dateofbirth, this.bio);
     }
+
+
 
 }
 

@@ -45,6 +45,6 @@ public class PostController {
         Post post = new Post(body, dateFormat.format(timeStamp), theUser);
         postRepository.save(post);
 
-        return new RedirectView("/userProfile" + theUser.getId());
+        return new RedirectView("/user/" + theUser.getId());
     }
 }
