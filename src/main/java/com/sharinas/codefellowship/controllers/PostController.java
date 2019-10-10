@@ -37,15 +37,14 @@ public class PostController {
 
     @PostMapping("/addPost")
     public RedirectView addPost(Principal p, String body) {
+        // code involving date written with Jeff Borda
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date timeStamp = new Date();
 
         ApplicationUser theUser = applicationUserRepository.findByUsername(p.getName());
-
         Post post = new Post(body, dateFormat.format(timeStamp), theUser);
-
         postRepository.save(post);
 
-        return new RedirectView("/usersProfile" + theUser.getId());
+        return new RedirectView("/userProfile/" + theUser.getId());
     }
 }
