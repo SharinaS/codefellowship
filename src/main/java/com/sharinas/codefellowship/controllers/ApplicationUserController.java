@@ -76,4 +76,19 @@ public class ApplicationUserController {
         return "allUsers";
     }
 
+    @PostMapping ("/follow")
+    public RedirectView followAUser(Principal p, long followUser) {
+        // might need to parse id
+
+        ApplicationUser follower = applicationUserRepository.findByUsername(p.getName());
+        ApplicationUser poster = applicationUserRepository.getOne(followUser); // user to be followed by the current id logged in.
+
+        follower.followUser(poster);
+        applicationUserRepository.save(follower);
+
+        return new RedirectView("/userProfile");
+    }
+
+
+
 }
