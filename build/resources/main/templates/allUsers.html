@@ -12,10 +12,17 @@
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
-
+        <h2>Users in CodeFellowship</h2>
+        <p>Checkout out their profiles!</p>
+        <!-- all the users that exist in CodeFellowship -->
         <div th:each="user : ${users}">
             <a th:href="${'/user/' + user.id}">[[${user.username}]]</a>
             <p>[[${user.bio}]]</p>
+            <!-- allow signed in user to follow another user -->
+            <form action="/follow" method="post">
+                <input type="hidden" name="followUser" th:value="${user.id}">
+                <input type="submit" />
+            </form>
 
         </div>
     </div>

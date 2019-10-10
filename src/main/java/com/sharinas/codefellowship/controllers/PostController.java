@@ -10,11 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+import sun.jvm.hotspot.utilities.AltPlatformInfo;
 
 import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 @Controller
 public class PostController {
@@ -46,5 +48,19 @@ public class PostController {
         postRepository.save(post);
 
         return new RedirectView("/user/" + theUser.getId());
+    }
+
+    @GetMapping("/feed")
+    public String showFeed(Principal p, Model m) {
+        // tell Spring that a particular user is visiting the page:
+        if (p != null) {
+            m.addAttribute("username", p.getName());
+        }
+        ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
+        Set<ApplicationUser> followerList = currentUser.getUsersIFollow();
+        m.addAttribute("peopleIfollowList", followerList);
+
+        m.addAttribute("username", p.getName());
+        return "feed";
     }
 }

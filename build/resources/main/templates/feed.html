@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-    <div th:replace="fragments/nav :: nav"></div>
+    <div class="container">
+        <div th:replace="fragments/nav :: nav"></div>
+
+        <th:block  th:each="user: ${peopleIfollowList}">
+            <p th:text="${user.username}"></p>
+            <th:block th:each="post: ${user.posts}">
+                <p th:text="${post.body}"></p>
+            </th:block>
+<!--            <p th:text="${user.posts}"></p>-->
+        </th:block>
+
+<!--        <ul> &lt;!&ndash; FIX THIS - get each post by the various users &ndash;&gt;-->
+<!--            <li th:each="post : ${username.posts}" th:text="${post}"> &lt;!&ndash; viewedUser key in model&ndash;&gt;-->
+<!--            </li>-->
+<!--        </ul>-->
+    </div>
 
 </body>
 </html>
