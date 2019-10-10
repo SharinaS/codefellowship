@@ -50,7 +50,7 @@ public class ApplicationUserController {
         return "login";
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/user/{id}")
     public String showSingleUser(@PathVariable long id, Principal p, Model m) {
 
         ApplicationUser user = applicationUserRepository.findById(id).get();
