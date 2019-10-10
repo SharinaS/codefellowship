@@ -14,7 +14,7 @@
         <div th:replace="fragments/nav :: nav"></div>
 
         <div th:each="user : ${users}">
-            <a th:href="${'/userProfile' + user.id}" th:text="${user.username}"></a>
+            <a th:href="${'/user/' + user.id}" th:text="${user.username}"></a>
         </div>
     </div>
 </body>

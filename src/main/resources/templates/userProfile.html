@@ -15,7 +15,7 @@
         <div th:replace="fragments/nav :: nav"></div>
         <h2>Welcome to [[${viewedUser.username}]]'s profile</h2>
         <ul>
-            <li th:each="post : ${viewedUser.posts}" th:text="${post}">
+            <li th:each="post : ${viewedUser.posts}" th:text="${post}"> <!-- viewedUser key in model-->
             </li>
         </ul>
     </div>
