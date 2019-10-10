@@ -39,7 +39,6 @@ public class Post {
     }
 
     public String toString() {
-        return String.format("%s wrote this post at %s: %s.", this.owner, this.timeStamp, this.body);
+        return String.format("%s wrote this post at %s: %s.", this.owner.getUsername(), this.timeStamp, this.body);
     }
-
 }
