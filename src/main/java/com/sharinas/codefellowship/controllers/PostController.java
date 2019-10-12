@@ -57,7 +57,9 @@ public class PostController {
             m.addAttribute("username", p.getName());
         }
         ApplicationUser currentUser = applicationUserRepository.findByUsername(p.getName());
+
         Set<ApplicationUser> followerList = currentUser.getUsersIFollow();
+
         m.addAttribute("peopleIfollowList", followerList);
 
         m.addAttribute("username", p.getName());

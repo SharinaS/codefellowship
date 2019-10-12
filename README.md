@@ -26,6 +26,8 @@ $ ./gradlew bootRun
 Go to localhost:8080
 
 ## Routes Found Within CodeFellowship
+Upon signing up or logging in, users should be taken to a home route that allows them to either navigate to their profile, add a new post, see their feed, or logout. Their profile page should display their posts.
+
 Numerous GET and POST routes are found within this app, which interact with the following pages:
 * home
 * login
@@ -36,4 +38,4 @@ Numerous GET and POST routes are found within this app, which interact with the 
 * addPost
 
 ## Time Frame of Build
-This project was built during the Java 401d6 course at Code Fellows, in the period of 4 days in October 2019.
+This project was built during the Java 401d6 course at Code Fellows, in the period of about four days in October 2019.
