@@ -73,18 +73,27 @@ public class ApplicationUserController {
     public String getAllUsers(Principal p, Model m) {
         m.addAttribute("username", p.getName());
         m.addAttribute("users", applicationUserRepository.findAll());
+
         return "allUsers";
     }
 
+    // === Works with form on allUsers.html, to allow current user to follower other users
     @PostMapping ("/follow")
     public RedirectView followAUser(Principal p, long followUser) {
-        // might need to parse id
 
         ApplicationUser follower = applicationUserRepository.findByUsername(p.getName());
         ApplicationUser poster = applicationUserRepository.getOne(followUser); // user to be followed by the current id logged in.
 
         follower.followUser(poster);
         applicationUserRepository.save(follower);
+
+        // if logged in user is not following user, don't show option to add user. - add to getAllUsers @PathVariable long id
+//        ApplicationUser otherUser = applicationUserRepository.findByUsername(p.getName());
+//        m.addAttribute("otherUserId", otherUser.getId());
+//
+//        ApplicationUser user = applicationUserRepository.findById(id).get();
+//        m.addAttribute("shouldShowFollow", !user.getUsersFollowingMe().contains(otherUser));
+
 
         return new RedirectView("/userProfile");
     }

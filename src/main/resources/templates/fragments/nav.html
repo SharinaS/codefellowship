@@ -2,40 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <div th:replace="fragments/stylelinks :: stylelinks"></div>
     <title>Nav Fragment</title>
 </head>
 <body>
-    <div class="container">
-        <section th:fragment="nav">
-            <!-- if person is logged in... -->
-            <nav th:if="${username}">
-                <h2>Hello, [[${username}]]!</h2>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/addPost">Add Post</a></li>
-                    <li><a href="/userProfile">See Your Profile</a></li>
-                    <li><a href="/users">See All Users</a></li>
-                    <li><a href="/feed">View Your Feed</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-            </nav>
-            <!-- if person is new or needs to login -->
-            <nav th:unless="${username}">
-                <h2>Welcome to CodeFellowship!</h2>
-                <p>Please create an account or login</p>
-                <ul>
-                    <li><a href="/">home</a></li>
-                    <li><a href="/login">login</a></li>
-                    <li><a href="/signup">signup</a></li>
-                </ul>
-            </nav>
-        </section>
-    </div>
+    <section th:fragment="nav">
+        <!-- if person is logged in... -->
+        <nav th:if="${username}">
+            <a href="/">Home</a>
+            <a href="/addPost">Add Post</a>
+            <a href="/userProfile">See Your Profile</a>
+            <a href="/users">See All Users</a>
+            <a href="/feed">View Your Feed</a>
+            <a href="/logout">Logout</a>
+            <h1>Hello, [[${username}]]!</h1>
+        </nav>
 
+        <!-- if person is new or needs to login -->
+        <nav th:unless="${username}">
+            <a href="/">home</a>
+            <a href="/login">login</a>
+            <a href="/signup">signup</a>
+            <h1>Welcome to CodeFellowship!</h1>
+            <p>Please create an account or login</p>
+        </nav>
+    </section>
 </body>
 </html>

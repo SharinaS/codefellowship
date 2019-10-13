@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/styles.css" rel="stylesheet" />
+    <div th:replace="fragments/stylelinks :: stylelinks"></div>
 </head>
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
+
+        <h1>Code Fellowship</h1>
+        <p> Welcome to a social site dedicated to bringing together community. Our mission is to encourage the
+        sharing of stories and lives, to bring friends and family closer together, and to support the making of new
+            friends.</p>
     </div>
 </body>
 </html>

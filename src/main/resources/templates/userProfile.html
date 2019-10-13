@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/styles.css" rel="stylesheet" />
-
     <title>User</title>
+    <div th:replace="fragments/stylelinks :: stylelinks"></div>
 </head>
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
-        <h2>Welcome to [[${viewedUser.username}]]'s profile</h2>
+        <h1>Welcome to [[${viewedUser.firstname}]] [[${viewedUser.lastname}]]'s profile</h1>
+        <p>About Me: [[${viewedUser.bio}]]</p>
+
+        <h2>My Recent Posts</h2>
         <ul>
             <li th:each="post : ${viewedUser.posts}" th:text="${post}"> <!-- viewedUser key in model-->
             </li>
