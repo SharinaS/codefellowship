@@ -39,3 +39,8 @@ Numerous GET and POST routes are found within this app, which interact with the 
 
 ## Time Frame of Build
 This project was built during the Java 401d6 course at Code Fellows, in the period of about four days in October 2019.
+
+## Future Tasks:
+* Style nav bar
+* Remove follow buttons on those users the signed in user has already followed
+* Prevent user from following self
