@@ -10,9 +10,6 @@ import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
-    public long getId() {
-        return id;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -80,6 +77,8 @@ public class ApplicationUser implements UserDetails {
     public String getBio() {
         return bio;
     }
+
+    public long getId() { return id; }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

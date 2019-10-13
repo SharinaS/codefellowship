@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="/styles.css" rel="stylesheet" />
+    <div th:replace="fragments/stylelinks :: stylelinks"></div>
 </head>
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
         <h2>Users in CodeFellowship</h2>
-        <p>Checkout out their profiles!</p>
-        <!-- all the users that exist in CodeFellowship -->
-        <div th:each="user : ${users}">
-            <a th:href="${'/user/' + user.id}">[[${user.username}]]</a>
+        <p>Checkout their profiles and click Follow!</p>
+        <!-- all the users that exist in CodeFellowship that user hasn't followed yet -->
+        <div class="aboutuser" th:each="user : ${users}">
+            <h2><a th:href="${'/user/' + user.id}">[[${user.username}]]</a></h2>
             <p>[[${user.bio}]]</p>
             <!-- allow signed in user to follow another user -->
-            <form action="/follow" method="post">
+            <form action="/follow" method="post"> <!-- th:if="${shouldShowFollow}" -->
                 <input type="hidden" name="followUser" th:value="${user.id}">
-                <input type="submit" />Follow me!
+                <input class="button" type="submit" value="Follow Me!" />
             </form>
+
 
         </div>
     </div>

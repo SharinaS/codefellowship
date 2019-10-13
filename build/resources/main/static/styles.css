@@ -2,3 +2,35 @@ body {
       background-color: #E9E9E9;
       margin-top: 40px;
 }
+
+.userIfollow-usrname {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.5em;
+    border: 2px solid silver;
+    border-radius: 25px;
+    padding-left: 50px;
+    margin: 5px;
+}
+
+#timestamp {
+    font-style: italic;
+}
+
+.seeall-users {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.5em;
+    border: 2px solid silver;
+    border-radius: 25px;
+    padding: 0px, 60px, 0px, 60px;
+    margin: 10px;
+}
+
+.button {
+    margin-bottom: 10px;
+}
+
+.aboutuser {
+    border: 2px solid silver;
+    margin: 10px;
+    padding: 20px;
+}

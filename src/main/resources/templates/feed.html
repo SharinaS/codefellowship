@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <div th:replace="fragments/stylelinks :: stylelinks"></div>
 </head>
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
 
+        <h1>Posts from Your Community</h1>
         <th:block  th:each="user: ${peopleIfollowList}">
-            <p th:text="${user.username}"></p>
+            <p class="userIfollow-usrname" th:text="${user.username}"></p>
             <th:block th:each="post: ${user.posts}">
+                <p id="timestamp" th:text="${post.timeStamp}"></p>
                 <p th:text="${post.body}"></p>
+
             </th:block>
-<!--            <p th:text="${user.posts}"></p>-->
         </th:block>
     </div>
-
 </body>
 </html>
