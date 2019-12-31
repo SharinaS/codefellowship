@@ -7,6 +7,7 @@ A fullstack app that allows users to securely login, write posts, follow other u
 * Bootstrap
 * CSS
 * HTML
+* RESTful Services
 
 ## Contributors
 Sharina Stubbs
