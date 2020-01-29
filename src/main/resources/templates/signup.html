@@ -7,6 +7,9 @@
 </head>
 <body>
     <div class="container">
+
+        <h3 th:if="${param.taken}">Sorry, that username was taken. Please try again. [[${param.param}]]</h3>
+
         <h1>Sign Up for CodeFellowship!</h1>
         <form action="/signup" method="POST">
             UserName<input name="username">

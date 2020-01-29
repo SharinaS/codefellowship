@@ -15,7 +15,7 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @Column(unique = true)
+//    @Column(unique = true)
     String username;
     String password;
     String firstname;

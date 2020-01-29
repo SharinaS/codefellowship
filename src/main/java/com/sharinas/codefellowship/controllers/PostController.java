@@ -66,3 +66,8 @@ public class PostController {
         return "feed";
     }
 }
+
+// ToDo: From Jeff: You can hide the follow button if the logged in user is the same as the viewed user.
+//  The logged in user comes from the Principal and the viewed user comes from the id.
+//  So you could create a boolean and send it over to your front end, something like:
+//  m.addAttribute("showFollowButton", viewedUser.getId() != loggedInUser.getId() ).

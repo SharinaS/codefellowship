@@ -10,6 +10,7 @@ import java.security.Principal;
 public class HomeController {
     @GetMapping("/")
     public String getHome(Principal p, Model m) {
+        // take username and use it to say hello to the user.
         if (p != null) {
             m.addAttribute("username", p.getName());
         }

@@ -25,19 +25,29 @@ public class ApplicationUserController {
     ApplicationUserRepository applicationUserRepository;
 
     @PostMapping("/signup")
-    public RedirectView createNewUser(String username, String password, String firstname, String lastname, String dateofbirth, String bio) {
-        // actually create a user & salt and hash password
-        ApplicationUser u = new ApplicationUser(username, passwordEncoder.encode(password), firstname, lastname, dateofbirth, bio);
+    public RedirectView signup(String username,
+                               String password,
+                               String firstname,
+                               String lastname,
+                               String dateofbirth,
+                               String bio) {
 
-        // TODO: make sure username is unique. If not, redirect back to /signup/error. Then, remove bodge in applicationUser, @Column(unique = true)
-        // save it to a database
-        applicationUserRepository.save(u);
-//        // establish autologin after signing up for an account
-        Authentication authentication = new UsernamePasswordAuthenticationToken(u, null, new ArrayList<>());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (applicationUserRepository.findByUsername(username) == null) {
+            // create a user & salt and hash password
+            ApplicationUser u = new ApplicationUser(username, passwordEncoder.encode(password), firstname, lastname, dateofbirth, bio);
+            // save it to a database
+            applicationUserRepository.save(u);
+            // establish autologin after signing up for an account
+            Authentication authentication = new UsernamePasswordAuthenticationToken(u, null, new ArrayList<>());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // send user back to homepage
-        return new RedirectView("/");
+            // send user back to homepage
+            return new RedirectView("/");
+            // TODO: make sure username is unique. If not, redirect back to /signup/error. Then, remove bodge in
+            //  applicationUser, @Column(unique = true)
+        } else {
+            return new RedirectView("/signup?taken=true");
+        }
     }
 
     @GetMapping("/signup")
@@ -87,17 +97,6 @@ public class ApplicationUserController {
         follower.followUser(poster);
         applicationUserRepository.save(follower);
 
-        // if logged in user is not following user, don't show option to add user. - add to getAllUsers @PathVariable long id
-//        ApplicationUser otherUser = applicationUserRepository.findByUsername(p.getName());
-//        m.addAttribute("otherUserId", otherUser.getId());
-//
-//        ApplicationUser user = applicationUserRepository.findById(id).get();
-//        m.addAttribute("shouldShowFollow", !user.getUsersFollowingMe().contains(otherUser));
-
-
         return new RedirectView("/userProfile");
     }
-
-
-
 }
