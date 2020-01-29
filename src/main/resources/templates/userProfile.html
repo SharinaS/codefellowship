@@ -10,13 +10,10 @@
         <div th:replace="fragments/nav :: nav"></div>
         <h1>Welcome to [[${viewedUser.firstname}]] [[${viewedUser.lastname}]]'s profile</h1>
         <p>About Me: [[${viewedUser.bio}]]</p>
-
         <h2>My Recent Posts</h2>
         <ul>
-            <li th:each="post : ${viewedUser.posts}" th:text="${post}"> <!-- viewedUser key in model-->
-            </li>
+            <li th:each="post : ${viewedUser.posts}" th:text="${post}"></li>
         </ul>
     </div>
-
 </body>
 </html>
