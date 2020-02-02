@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-import sun.jvm.hotspot.utilities.AltPlatformInfo;
 
 import java.security.Principal;
 import java.text.DateFormat;
@@ -40,6 +39,7 @@ public class PostController {
     @PostMapping("/addPost")
     public RedirectView addPost(Principal p, String body) {
         // code involving date written with Jeff Borda
+        // Formatting the date time
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date timeStamp = new Date();
 
@@ -71,3 +71,4 @@ public class PostController {
 //  The logged in user comes from the Principal and the viewed user comes from the id.
 //  So you could create a boolean and send it over to your front end, something like:
 //  m.addAttribute("showFollowButton", viewedUser.getId() != loggedInUser.getId() ).
+

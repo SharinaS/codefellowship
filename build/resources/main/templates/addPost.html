@@ -8,6 +8,7 @@
 <body>
     <div class="container">
         <div th:replace="fragments/nav :: nav"></div>
+
         <form action="/addPost" method="POST">
             <label for="body">Add a Post</label>
             <textarea name="body" id="body"></textarea>
