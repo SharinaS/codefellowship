@@ -43,8 +43,6 @@ public class ApplicationUserController {
 
             // send user back to homepage
             return new RedirectView("/");
-            // TODO: make sure username is unique. If not, redirect back to /signup/error. Then, remove bodge in
-            //  applicationUser, @Column(unique = true)
         } else {
             return new RedirectView("/signup?taken=true");
         }
@@ -95,6 +93,7 @@ public class ApplicationUserController {
         ApplicationUser poster = applicationUserRepository.getOne(followUser); // user to be followed by the current id logged in.
 
         follower.followUser(poster);
+
         applicationUserRepository.save(follower);
 
         return new RedirectView("/userProfile");

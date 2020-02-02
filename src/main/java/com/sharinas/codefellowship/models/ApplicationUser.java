@@ -15,14 +15,12 @@ public class ApplicationUser implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-//    @Column(unique = true)
     String username;
     String password;
     String firstname;
     String lastname;
     String dateofbirth;
     String bio;
-
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
     List<Post> posts;
@@ -39,6 +37,7 @@ public class ApplicationUser implements UserDetails {
     Set<ApplicationUser> usersFollowingMe;
 
     public void followUser(ApplicationUser followedUser){
+
         usersIFollow.add(followedUser);
     }
 
